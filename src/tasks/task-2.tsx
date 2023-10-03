@@ -1,8 +1,8 @@
-type MyComponentProps = {
-  items: any
-  defaultItem: any
+type MyComponentProps<T> = {
+  items: T[]
+  defaultItem: T
 }
-function MyComponent(props: MyComponentProps) {
+function MyComponent<T extends number | User>(props: MyComponentProps<T>) {
   console.log(props)
   return <p>some content</p>
 }
@@ -15,8 +15,11 @@ const App = () => {
 
   return (
     <>
-      <MyComponent items={['react', 'typescript']} defaultItem={9} />
-      <MyComponent items={users} defaultItem={'JUST STRING'} />
+      {/*defaultItem должен принимать только number*/}
+      <MyComponent items={[1, 2]} defaultItem={5} />
+
+      {/*defaultItem должен принимать только User*/}
+      <MyComponent items={users} defaultItem={{ name: 'Brendan', age: 1 }} />
     </>
   )
 }

@@ -2,6 +2,10 @@ import s from './DeckItem.module.css'
 import Skeleton from 'react-loading-skeleton'
 
 export const DeckItemSkeleton = ({ count }: { count: number }) => {
+  // [empty, ...]
+  // [null,...]
+  // [<li>]
+
   return Array(count)
     .fill(null)
     .map((_, index) => (

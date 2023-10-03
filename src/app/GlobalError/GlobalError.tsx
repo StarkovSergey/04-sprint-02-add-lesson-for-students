@@ -1,12 +1,21 @@
 import { useEffect } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import { useAppDispatch, useAppSelector } from '../store.ts'
+import { selectAppError } from '../app-selectors.ts'
+import { setAppError } from '../app-reducer.ts'
 
 export const GlobalError = () => {
-  const errorMessage = ''
+  const dispatch = useAppDispatch()
+  const errorMessage = useAppSelector(selectAppError)
 
   useEffect(() => {
     if (errorMessage) {
       toast.error(errorMessage)
+      toast.onChange(({ status }) => {
+        if (status === 'added') {
+          dispatch(setAppError(null))
+        }
+      })
     }
   }, [errorMessage])
 
