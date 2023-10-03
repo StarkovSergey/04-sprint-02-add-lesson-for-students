@@ -9,7 +9,7 @@ export const useFetchDecks = () => {
 
   useEffect(() => {
     dispatch(fetchDecksTC())
-  }, [])
+  }, [dispatch])
 
   return {
     decks,
