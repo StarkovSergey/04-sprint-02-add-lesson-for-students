@@ -14,13 +14,13 @@ export const addDeckTC = (name: string) => async (dispatch: Dispatch) => {
   })
 }
 
-export const deleteDeckTC = (id: string) => (dispatch: Dispatch) => {
+export const deleteDeckTC = (id: string) => async (dispatch: Dispatch) => {
   return decksAPI.deleteDeck(id).then((res) => {
     dispatch(deleteDeckAC(res.data.id))
   })
 }
 
-export const updateDeckTC = (params: UpdateDeckParams) => (dispatch: Dispatch) => {
+export const updateDeckTC = (params: UpdateDeckParams) => async (dispatch: Dispatch) => {
   return decksAPI.updateDeck(params).then((res) => {
     dispatch(updateDeckAC(res.data))
   })

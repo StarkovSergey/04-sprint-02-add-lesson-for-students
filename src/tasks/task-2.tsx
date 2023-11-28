@@ -1,5 +1,5 @@
 type MyComponentProps = {
-  items: any
+  items: any[]
   defaultItem: any
 }
 function MyComponent(props: MyComponentProps) {
