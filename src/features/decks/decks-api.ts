@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const instance = axios.create({
-  baseURL: 'https://api.flashcards.andrii.es/v1/',
+  baseURL: 'https://api.flashcards.andrii.es',
   headers: {
     'x-auth-skip': true,
   },
@@ -9,18 +9,18 @@ export const instance = axios.create({
 
 export const decksAPI = {
   fetchDecks() {
-    return instance.get<FetchDecksResponse>(`decks`)
+    return instance.get<FetchDecksResponse>(`v2/decks`)
   },
   addDeck(name: string) {
-    return instance.post<Deck>(`decks`, {
+    return instance.post<Deck>(`v1/decks`, {
       name,
     })
   },
   deleteDeck(id: string) {
-    return instance.delete<Deck>(`decks/${id}`)
+    return instance.delete<Deck>(`v1/decks/${id}`)
   },
   updateDeck({ id, name }: UpdateDeckParams) {
-    return instance.patch<Deck>(`decks/${id}`, { name })
+    return instance.patch<Deck>(`v1/decks/${id}`, { name })
   },
 }
 

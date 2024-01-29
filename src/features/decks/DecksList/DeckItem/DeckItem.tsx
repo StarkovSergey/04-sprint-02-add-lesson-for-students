@@ -7,7 +7,7 @@ type DeckProps = {
   deck: Deck
 }
 
-const TEST_ACC_NAME = 'testName'
+const TEST_ACC_NAME = 'kukus'
 
 export const DeckItem = ({ deck }: DeckProps) => {
   const isTestingDeck = deck.author.name === TEST_ACC_NAME
